@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="./assets/style.css">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+    <div class="outer-div">
+        <div class="top-div">
+            <header class="header1" id="heading">
+                <h1>Weather Dashboard</h1>
+
+            </header>
+        </div>
+        <div class="search-container">
+            <input type="text" id="inputtag">
+            <button id="serach-btn">Search</button>
+        </div>
+        <div class="buttom-div">
+
+
+            <div class="info-container">
+
+                <div class="weather_today">
+                    <div class="weather_details"></div>
+                    <h2 class="weather_city">City</h2>
+
+                    <div class="weather_current">
+                        <p class="weather_indicator--date"><span class="value">16/03/2023</span></p>
+                        <p class=" weather_indicator--temperature">Temperature : <span class="value">+22 </span> &deg;F
+                        </p>
+
+                        <p class="weather_indicator--humidity">Humidity : <span class="value">50 </span>%</p>
+                        <p class=" weather_indicator--wind">Wind : <span class="value">8.90 </span>MPH</p>
+                        <p class=" weather_indicator--pressure">Pressure : <span class="value">1050 </span>hpa</p>
+
+
+                    </div>
+                </div>
+                <img src="./assets/images/sunshine.jpg" alt="clear sky" class="weather_image">
+                <div class="weather_temperature">
+
+                </div>
+
+            </div>
+            <div class="card-container">
+                <article class="weather_forecast_item">
+                    <p class=" weather_forecast--date"><span class="value">16/03/2023</span></p>
+                    <p class="weather_forecast weather_forecast--humidity"><span class="value">50</span>%</p>
+                    <p class="weather_forecast weather_forecast--wind"><span class="value">West, 5</span>m/s</p>
+                    <p class="weather_forecast weather_forecast--pressure"><span class="value">1050</span>hpa</p>
+                </article>
+                <article class="weather_forecast_item">
+                    <p class="weather_forecast weather_forecast--date"><span class="value">16/03/2023</span></p>
+                    <p class="weather_forecast weather_forecast--humidity"><span class="value">50</span>%</p>
+                    <p class="weather_forecast weather_forecast--wind"><span class="value">West, 5</span>m/s</p>
+                    <p class="weather_forecast weather_forecast--pressure"><span class="value">1050</span>hpa</p>
+                </article>
+                <article class="weather_forecast_item">
+                    <p class="weather_forecast weather_forecast--date"><span class="value">16/03/2023</span></p>
+                    <p class="weather_forecast weather_forecast--humidity"><span class="value">50</span>%</p>
+                    <p class="weather_forecast weather_forecast--wind"><span class="value">West, 5</span>m/s</p>
+                    <p class="weather_forecast weather_forecast--pressure"><span class="value">1050</span>hpa</p>
+                </article>
+                <article class="weather_forecast_item">
+                    <p class="weather_forecast weather_forecast--date"><span class="value">16/03/2023</span></p>
+                    <p class="weather_forecast weather_forecast--humidity"><span class="value">50</span>%</p>
+                    <p class="weather_forecast weather_forecast--wind"><span class="value">West, 5</span>m/s</p>
+                    <p class="weather_forecast weather_forecast--pressure"><span class="value">1050</span>hpa</p>
+                </article>
+                <article class="weather_forecast_item">
+                    <p class="weather_forecast weather_forecast--date"><span class="value">16/03/2023</span></p>
+                    <p class="weather_forecast weather_forecast--humidity"><span class="value">50</span>%</p>
+                    <p class="weather_forecast weather_forecast--wind"><span class="value">West, 5</span>m/s</p>
+                    <p class="weather_forecast weather_forecast--pressure"><span class="value">1050</span>hpa</p>
+                </article>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./assets/script.js"></script>
+</body>
+
+</html>
