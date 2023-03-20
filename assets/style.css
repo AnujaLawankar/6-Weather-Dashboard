@@ -23,24 +23,39 @@ h1 {
 
 .search-container {
     border: #d9e2e6;
-    font-size: 22px;
+
 }
 
-.info-container {
-    border: #d9e2e6;
+#inputtag {
+    font-size: 25px;
+}
+
+#serach-btn {
+
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(221, 179, 100);
+}
+
+
+.weather_today {
+    margin-right: 25px;
+    border: 2px solid wheat;
+    padding-left: 20px;
+    margin-bottom: 20px;
 }
 
 .card-container {
     width: 90%;
     text-align: center;
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     margin-right: 20%;
 }
 
 .weather_forecast_item {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    margin: 0 50px 50px;
+    margin: 0 20px 20px;
     padding: 10px 5px 10px;
 }

@@ -4,8 +4,8 @@ let humidity = document.querySelector('.weather_indicator--humidity>.value');
 let wind = document.querySelector('.weather_indicator--wind>.value');
 let pressure = document.querySelector('.weather_indicator--pressure>.value');
 let temperature = document.querySelector(".weather_indicator--temperature>.value");
-
-
+let weatherIcon = document.querySelector('.weather_image');
+let forecastElements = document.querySelectorAll('.weather_forecast_item');
 let searchinp = document.querySelector('#inputtag');
 
 
@@ -27,27 +27,52 @@ let getWeatherByCityName = async (city) => {
 
 }
 
-//getWeatherByCityName("New York");
-searchinp.addEventListener("keydwon", async (e) => {
-    if (e.keyCode === 13) {
-        let weather = await getWeatherByCityName(searchinp.value);
-        //  console.log(weather);
-        weatherdisplay(weather);
-        showdate();
-        //  makeList();
+// //getWeatherByCityName("New York");
+// searchinp.addEventListener("keydown", async (e) => {
+//     if (e.keyCode === 13) {
 
-    }
-})
+//         let weather = await getWeatherByCityName(searchinp.value);
+//         //  console.log(weather);
+//         weatherdisplay(weather);
+//         showdate();
+//         searchinp.innerHTML = "";
+//         makeList();
 
+
+
+//     }
+// })
+
+let searchBtn = document.querySelector('#serach-btn');
+
+searchBtn.addEventListener('click', async () => {
+
+    let weather = await getWeatherByCityName(searchinp.value);
+    weatherdisplay(weather);
+    showdate();
+
+    makeList();
+    // let weatherForecast = await getWeatherForecastByCityName(searchinp.value);
+    // displayWeatherForecast(weatherForecast);
+
+});
 
 let weatherdisplay = (data) => {
     console.log(data);
 
-    city.textContent = data.name + ',' + data.sys.country;
+    city.textContent = data.name + '' + ',' + '' + data.sys.country;
     humidity.textContent = data.main.humidity;
     pressure.textContent = data.main.pressure;
     wind.textContent = data.wind.speed;
     temperature.textContent = data.main.temp;
+    // Get the weather icon code from the data
+    const weatherIconCode = data.weather[0].icon;
+
+    // Set the source of the weather icon image to the URL of the weather icon image
+    weatherIcon.src = `https://openweathermap.org/img/wn/${weatherIconCode}.png`;
+
+
+    getWeatherForecastByCityName(searchinp.value);
 }
 
 function showdate() {
@@ -58,13 +83,56 @@ function showdate() {
 }
 
 
-
 function makeList() {
-    let listItem = $("<li>").addClass("list-group-item").text(city);
+
+
+    let listItem = $("<li>").addClass("list-group").text(searchinp.value);
     console.log(listItem);
     $(".list").append(listItem);
+    document.querySelector("#inputtag").value = "";
 }
 
 
 
 
+
+let forecastAPIKey = "cefe35c460e97cd8334d1bdfbaf225e7";
+let forecastBaseEndpoint = "https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=" + forecastAPIKey;
+
+console.log(forecastAPIKey);
+
+console.log(forecastBaseEndpoint);
+
+let getWeatherForecastByCityName = async (city) => {
+    let endpoint = forecastBaseEndpoint + '&q=' + city;
+    let response = await fetch(endpoint);
+    let weatherForecast = await response.json();
+
+    console.log(weatherForecast);
+
+
+
+    // Loop through the forecast data for the next 5 unique days
+    let forecastItems = document.querySelectorAll('.weather_forecast_item');
+    let uniqueDays = []; // array to store the unique forecast dates
+    for (let i = 0; i < weatherForecast.list.length; i++) {
+        let forecast = weatherForecast.list[i];
+        let forecastDate = new Date(forecast.dt_txt).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+
+        // check if forecast date is already displayed
+        if (!uniqueDays.includes(forecastDate)) {
+            uniqueDays.push(forecastDate); // add forecast date to unique days array
+            let index = uniqueDays.indexOf(forecastDate); // get index of the unique forecast date
+            if (index < 5) { // display data for next 5 unique days only
+                // Display the forecast data for the current day
+                forecastItems[index].querySelector('.weather_forecast--date .value').textContent = forecastDate;
+                forecastItems[index].querySelector('.weather_forecast--humidity .value').textContent = forecast.main.humidity + '';
+                forecastItems[index].querySelector('.weather_forecast--wind .value').textContent = `${forecast.wind.speed} `;
+                forecastItems[index].querySelector('.weather_forecast--pressure .value').textContent = `${forecast.main.pressure} `;
+                forecastItems[index].querySelector('.weather_image').src = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`;
+            } else {
+                break; // exit loop if data for next 5 unique days has been displayed
+            }
+        }
+    }
+}
