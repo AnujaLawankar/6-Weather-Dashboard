@@ -48,16 +48,30 @@ let searchBtn = document.querySelector('#serach-btn');
 searchBtn.addEventListener('click', async () => {
 
     let weather = await getWeatherByCityName(searchinp.value);
-    weatherdisplay(weather);
+    weatherdisplay(weather, searchinp.value);
     showdate();
 
     makeList();
+    storeSearch();
+
+
+    var lastCity = localStorage.getItem("city");
+
+    console.log(lastCity);
     // let weatherForecast = await getWeatherForecastByCityName(searchinp.value);
     // displayWeatherForecast(weatherForecast);
 
 });
 
-let weatherdisplay = (data) => {
+
+
+function storeSearch() {
+    localStorage.setItem("city", searchinp.value);
+    console.log(searchinp.value);
+}
+
+
+let weatherdisplay = (data, cityname) => {
     console.log(data);
 
     city.textContent = data.name + '' + ',' + '' + data.sys.country;
@@ -72,7 +86,9 @@ let weatherdisplay = (data) => {
     weatherIcon.src = `https://openweathermap.org/img/wn/${weatherIconCode}.png`;
 
 
-    getWeatherForecastByCityName(searchinp.value);
+    getWeatherForecastByCityName(cityname);
+
+
 }
 
 function showdate() {
@@ -87,9 +103,26 @@ function makeList() {
 
 
     let listItem = $("<li>").addClass("list-group").text(searchinp.value);
+    listItem.on('click', async function (event) {
+
+
+        let weather = await getWeatherByCityName(event.target.textContent);
+        weatherdisplay(weather, event.target.textContent);
+        showdate();
+
+
+    })
+
+
     console.log(listItem);
     $(".list").append(listItem);
+
+
+
+
     document.querySelector("#inputtag").value = "";
+
+
 }
 
 
