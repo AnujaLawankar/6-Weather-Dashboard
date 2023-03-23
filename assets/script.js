@@ -50,9 +50,9 @@ searchBtn.addEventListener('click', async () => {
     let weather = await getWeatherByCityName(searchinp.value);
     weatherdisplay(weather, searchinp.value);
     showdate();
-
-    makeList();
     storeSearch();
+    makeList();
+
 
 
     var lastCity = localStorage.getItem("city");
