@@ -40,10 +40,6 @@ searchBtn.addEventListener('click', async () => {
     makeList();
 
 
-
-
-
-
     var lastCity = localStorage.getItem("city");
 
     console.log(lastCity);
