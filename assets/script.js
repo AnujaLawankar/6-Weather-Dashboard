@@ -27,21 +27,7 @@ let getWeatherByCityName = async (city) => {
 
 }
 
-// //getWeatherByCityName("New York");
-// searchinp.addEventListener("keydown", async (e) => {
-//     if (e.keyCode === 13) {
 
-//         let weather = await getWeatherByCityName(searchinp.value);
-//         //  console.log(weather);
-//         weatherdisplay(weather);
-//         showdate();
-//         searchinp.innerHTML = "";
-//         makeList();
-
-
-
-//     }
-// })
 
 let searchBtn = document.querySelector('#serach-btn');
 
@@ -52,6 +38,9 @@ searchBtn.addEventListener('click', async () => {
     showdate();
     storeSearch();
     makeList();
+
+
+
 
 
 
