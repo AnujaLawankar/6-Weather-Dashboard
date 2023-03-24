@@ -119,4 +119,8 @@ The following image demonstrates the website appearance:
 6.If the user want to see weather forecast for already search cities. Then only by clicking on search history city name he could get weather forecast.
 ![Website](./assets/images/screenshot6.png)
 
+7. City names are store in local storage.
+![Website](./assets/images/screenshot7.png)
+
+
 
