@@ -75,14 +75,14 @@
 Here, you can find the webpage.
 
 
-weather-dashboard web application's URL:-
-https://github.com/AnujaLawankar/6-Weather-Dashboard
+weather-dashboard web application's deployed URL:-
 
+https://anujalawankar.github.io/6-Weather-Dashboard/
 
 
 
 Here, you can find the GitHub URL:-
-GitHub URL:- https://github.com/AnujaLawankar/weather-dashboard
+GitHub URL:- https://github.com/AnujaLawankar/6-Weather-Dashboard
 
 
 
