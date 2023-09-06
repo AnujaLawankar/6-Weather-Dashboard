@@ -76,7 +76,7 @@ Here, you can find the webpage.
 
 
 weather-dashboard web application's URL:-
- https://anujalawankar.github.io/weather-dashboard/
+https://github.com/AnujaLawankar/6-Weather-Dashboard
 
 
 
